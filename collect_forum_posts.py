@@ -25,6 +25,7 @@ logger = logging.getLogger(__name__)
 
 # 论坛ID映射
 FORUM_IDS = {
+    '主理人': 213,
     '魅族手机': 149,
     'Flyme': 60,
     '魅族商城': 216,
@@ -40,8 +41,7 @@ FORUM_IDS = {
     '魅友记': 214,
     '社区办公室': 13,
     '二手交易': 20,
-    '我有一个朋友': 215,
-    '主理人': 213
+    '我有一个朋友': 215
 }
 
 class ForumPostCollector:
@@ -143,7 +143,7 @@ class ForumPostCollector:
             # 处理帖子数据
             for post in posts:
                 # 从 detail 中获取 post_id
-                if post.get('type') == 'content_1' and 'detail' in post:
+                if 'detail' in post:
                     detail = post['detail']
                     post_id = detail.get('id')
                     if not post_id:
